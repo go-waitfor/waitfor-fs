@@ -86,5 +86,5 @@ func TestFile_FileNotExists(t *testing.T) {
 func TestFile_MissedURL(t *testing.T) {
 	_, err := fs.New(nil)
 
-	assert.NoError(t, err)
+	assert.Error(t, err)
 }
