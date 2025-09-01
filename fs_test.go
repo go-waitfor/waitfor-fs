@@ -3,7 +3,6 @@ package fs_test
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -17,7 +16,7 @@ import (
 )
 
 func TestUse(t *testing.T) {
-	file, err := ioutil.TempFile(os.TempDir(), fmt.Sprintf("waitfor_TestUse_%d.txt", time.Now().Nanosecond()))
+	file, err := os.CreateTemp(os.TempDir(), fmt.Sprintf("waitfor_TestUse_%d.txt", time.Now().Nanosecond()))
 
 	if err != nil {
 		t.Error(err)
@@ -39,7 +38,7 @@ func TestUse(t *testing.T) {
 }
 
 func TestFile(t *testing.T) {
-	file, err := ioutil.TempFile(os.TempDir(), fmt.Sprintf("waitfor_TestFile_%d.txt", time.Now().Nanosecond()))
+	file, err := os.CreateTemp(os.TempDir(), fmt.Sprintf("waitfor_TestFile_%d.txt", time.Now().Nanosecond()))
 
 	assert.NoError(t, err)
 
